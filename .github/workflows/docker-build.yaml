@@ -18,7 +18,6 @@ jobs:
       # ------------Deuxième LS------------
       - name: Gestion de la version
         run: |
-          ${{ vars.IMAGE_ANTOINE_VERSION_NUM }}= ${{ vars.IMAGE_ANTOINE_VERSION_NUM }} + 0.1
           echo "Notre version est : ${{ vars.IMAGE_ANTOINE_VERSION_NUM }}"
 
       # ------------Connexion à DockerHub------------
