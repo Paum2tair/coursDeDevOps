@@ -4,4 +4,18 @@ jobs:
   build-docker-image:
     runs-on: ubuntu-latest
     steps:
+      # Premier LS
       - run: ls
+      # Checkout au repo
+      - uses: actions/checkout@v4
+        with:
+          repository: 'https://github.com/Paum2tair/coursDeDevOps/'
+
+
+#checkout
+
+#ls
+#build
+#images
+#push
+#pas de creds en clair
