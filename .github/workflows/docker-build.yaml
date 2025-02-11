@@ -15,10 +15,15 @@ jobs:
       # ------------Deuxième LS------------
       - run: ls
 
-      # ------------Deuxième LS------------
+      # ------------Gestion de la version------------
       - name: Gestion de la version
         run: |
-          echo "Notre version est : ${{ vars.IMAGE_ANTOINE_VERSION_NUM }}"
+          echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
+          echo "Notre version est : $VERSION "
+          NEW_VERSION=$(echo "$VERSION + 0.1" | bc)
+          echo "$NEW_VERSION" > version.txt
+          echo "VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "Notre nouvelle version est : $VERSION "
 
       # ------------Connexion à DockerHub------------
       - name: Login to Docker Hub
@@ -40,7 +45,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: paum2tair/antoine-provain:${{ vars.IMAGE_ANTOINE_VERSION_TYPE }}${{ vars.IMAGE_ANTOINE_VERSION_NUM }}
+          tags: "paum2tair/antoine-provain:${{ vars.IMAGE_ANTOINE_VERSION_TYPE }}$VERSION" 
 
 #checkout
 #ls
