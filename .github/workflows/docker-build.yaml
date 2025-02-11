@@ -53,7 +53,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: paum2tair/antoine-provain:${{ vars.IMAGE_ANTOINE_VERSION_TYPE }}$VERSION 
+          tags: paum2tair/antoine-provain:${{ vars.IMAGE_ANTOINE_VERSION_TYPE }}$(cat version.txt) 
 
 #checkout
 #ls
